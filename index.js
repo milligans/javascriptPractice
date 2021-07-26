@@ -7,12 +7,14 @@ for (var i = 0; i<numberOfDrumButtons; i++){
 document.querySelectorAll(".drum")[i].addEventListener("click", function(){
     var buttonInnerHTML = this.innerHTML;
     whichButton(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
     //what to do when click selected
 });
 }
 addEventListener("keydown", function(event) {
     console.log(event);
    whichButton(event.key);
+   buttonAnimation(event.key);
 });
 
 function whichButton(input){
@@ -56,3 +58,12 @@ function whichButton(input){
 
 
     }}
+
+    function buttonAnimation(currentKey){
+        
+     var activeButton =    document.querySelector("." + currentKey);
+     activeButton.classList.add("pressed");
+     setTimeout(function() {
+         activeButton.classList.remove("pressed");
+     }, 100);
+    }
